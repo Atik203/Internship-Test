@@ -31,7 +31,7 @@ const Banner = () => {
             to={"/all-shows"}
             className="btn text-center text-sm md:text-base bg-red-500 text-white border-none hover:text-black hover:bg-gray-200"
           >
-            Explore More
+            Explore Shows
           </Link>
         </div>
       </div>
