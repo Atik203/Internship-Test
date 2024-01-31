@@ -1,16 +1,15 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import Banner from "./../../Components/Banner/Banner";
 
-const Home = () => {
+const AllShows = () => {
   return (
     <div className="w-11/12 mx-auto max-w-[1440px] min-h-screen">
       <Helmet>
-        <title>ShowFlim | Home</title>
+        <title>ShowFlim | All Shows</title>
       </Helmet>
-      <Banner></Banner>
+      <h1>all show</h1>
     </div>
   );
 };
 
-export default Home;
+export default AllShows;
