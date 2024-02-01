@@ -165,7 +165,7 @@ const Details = () => {
               className=""
             >
               <img
-                src="../../../public/imdb.png"
+                src="https://i.ibb.co/kyN6kPB/imdb.png"
                 alt=""
                 className="w-10"
                 title="IMDb Rating"
