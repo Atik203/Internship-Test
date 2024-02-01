@@ -1,20 +1,9 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import ShowCard from "../../Components/ShowCard/ShowCard";
+import useShows from "../../Hooks/useShows";
 
 const AllShows = () => {
-  const [shows, setShow] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://api.tvmaze.com/search/shows?q=all")
-      .then((res) => setShow(res.data))
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
+  const [shows] = useShows();
   return (
     <div className="w-11/12 mx-auto max-w-[1440px] min-h-screen">
       <Helmet>

@@ -1,18 +1,8 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import ShowCard from "../ShowCard/ShowCard";
+import useShows from "../../Hooks/useShows";
 
 const PopularShows = () => {
-  const [shows, setShow] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://api.tvmaze.com/search/shows?q=all")
-      .then((res) => setShow(res.data))
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const [shows] = useShows();
 
   const filteredShows = shows
     .filter(

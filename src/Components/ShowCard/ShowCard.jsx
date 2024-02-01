@@ -13,6 +13,7 @@ const ShowCard = ({ show }) => {
     premiered,
     ended,
     image,
+    status,
   } = show;
 
   const imageUrl =
@@ -20,7 +21,7 @@ const ShowCard = ({ show }) => {
     image?.medium ||
     "https://i.ibb.co/0cbkS4X/No-image-available-svg.png";
 
-  const completed = ended ? new Date(ended).toLocaleDateString() : "Ongoing";
+  const completed = status === "Ended" ? "Completed" : "Ongoing";
   const imdbLink = externals?.imdb || "https://www.imdb.com/";
 
   return (
@@ -32,9 +33,12 @@ const ShowCard = ({ show }) => {
           className="object-cover w-full h-full transition-opacity group-hover:opacity-70"
         />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <button className="btn btn-primary text-white border-none hover:text-black hover:bg-gray-300 bg-red-500">
-            Details
-          </button>
+          <Link to={`/details/${id}`}>
+            {" "}
+            <button className="btn btn-primary text-white border-none hover:text-black hover:bg-gray-300 bg-red-500">
+              Details
+            </button>
+          </Link>
         </div>
       </figure>
       <div className="flex items-center justify-between p-4">
@@ -46,7 +50,7 @@ const ShowCard = ({ show }) => {
           className="text-gray-500 text-right cursor-pointer"
         >
           <span className="hover:text-blue-600 hover:underline">
-            #{completed === "Ongoing" ? "Ongoing" : "Completed"}
+            #{completed}
           </span>
           , <span className="hover:text-blue-600 hover:underline">#{type}</span>
         </a>
@@ -55,7 +59,7 @@ const ShowCard = ({ show }) => {
         <p className="text-gray-500 mb-2">Language: {language}</p>
       </div>
       <p className="pl-4 pr-4 text-gray-500 mb-2">
-        Genres: {genres.join(", ")}
+        Genres: {genres?.join(", ")}
       </p>
       <a
         href={`https://www.imdb.com/title/${imdbLink}/`}

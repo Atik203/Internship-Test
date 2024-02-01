@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import ErrorPage from "./../Pages/ErrorPage/ErrorPage";
 import MyBooking from "../Pages/MyBooking/MyBooking";
 import AllShows from "../Pages/AllShows/AllShows";
+import Details from "../Pages/Details/Details";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +21,12 @@ const router = createBrowserRouter([
         element: <AllShows></AllShows>,
       },
       {
-        path: "my-booking",
+        path: "/my-booking",
         element: <MyBooking></MyBooking>,
+      },
+      {
+        path: "/details/:id",
+        element: <Details></Details>,
       },
     ],
   },
