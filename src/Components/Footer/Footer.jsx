@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div className="bg-gray-700">
       <footer className="footer text-white p-12 md:p-12 md:flex md:gap-4 lg:grid ">
         <nav>
           <header className="footer-title">Our Services</header>
-          <a className="link link-hover">Movies Database</a>
+          <Link to={"/all-shows"} className="link link-hover">
+            Movies Database
+          </Link>
           <a className="link link-hover">TV Shows Guide</a>
           <a className="link link-hover">Booking Platform</a>
         </nav>

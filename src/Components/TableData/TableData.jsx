@@ -1,10 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const TableData = ({ booking, handleCancel }) => {
-  console.log(booking);
-  const { Name, image, schedule, network, language, name, date, email, id } =
-    booking;
+  const { Name, image, schedule, network, name, date, email, id } = booking;
 
   const country = network?.country?.name || "United States";
   const showTime = schedule?.time || "Not Available";
@@ -50,6 +48,31 @@ const TableData = ({ booking, handleCancel }) => {
       </th>
     </tr>
   );
+};
+
+TableData.propTypes = {
+  booking: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+      original: PropTypes.string,
+      medium: PropTypes.string,
+    }),
+    schedule: PropTypes.shape({
+      time: PropTypes.string,
+      days: PropTypes.arrayOf(PropTypes.string),
+    }),
+    network: PropTypes.shape({
+      country: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+    }),
+    language: PropTypes.string,
+    name: PropTypes.string,
+    date: PropTypes.string,
+    email: PropTypes.string,
+    id: PropTypes.number.isRequired,
+  }).isRequired,
+  handleCancel: PropTypes.func.isRequired,
 };
 
 export default TableData;

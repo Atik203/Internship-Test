@@ -1,5 +1,6 @@
 import ShowCard from "../ShowCard/ShowCard";
 import useShows from "../../Hooks/useShows";
+import { Link } from "react-router-dom";
 
 const PopularShows = () => {
   const [shows] = useShows();
@@ -21,6 +22,14 @@ const PopularShows = () => {
         {filteredShows?.map((show) => (
           <ShowCard key={show.show.id} show={show.show}></ShowCard>
         ))}
+      </div>
+      <div className="text-center mb-20">
+        <Link
+          to={"/all-shows"}
+          className="btn text-center text-sm md:text-base bg-red-500 text-white border-none hover:text-black hover:bg-gray-200"
+        >
+          Show All
+        </Link>
       </div>
     </div>
   );

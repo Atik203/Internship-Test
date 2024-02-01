@@ -1,21 +1,10 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const ShowCard = ({ show }) => {
-  const {
-    id,
-    name,
-    externals,
-    type,
-    language,
-    genres,
-    runtime,
-    premiered,
-    ended,
-    image,
-    status,
-  } = show;
-
+  const { id, name, externals, type, language, genres, image, status, rating } =
+    show;
+  const Rating = rating?.average || "Not Available";
   const imageUrl =
     image?.original ||
     image?.medium ||
@@ -61,21 +50,56 @@ const ShowCard = ({ show }) => {
       <p className="pl-4 pr-4 text-gray-500 mb-2">
         Genres: {genres?.join(", ")}
       </p>
-      <a
-        href={`https://www.imdb.com/title/${imdbLink}/`}
-        rel="noreferrer"
-        target="_blank"
-        className="pb-4 pl-4 pr-4"
-      >
-        <img
-          src="../../../public/imdb.png"
-          alt=""
-          className="w-10"
-          title="IMDb Rating"
-        />
-      </a>
+      <div className="flex items-center justify-start pl-4 pb-4 gap-3">
+        <a
+          href={`https://www.imdb.com/title/${imdbLink}/`}
+          rel="noreferrer"
+          target="_blank"
+          className=""
+        >
+          <img
+            src="../../../public/imdb.png"
+            alt=""
+            className="w-10"
+            title="IMDb Rating"
+          />
+        </a>
+        <div className="rating">
+          <input
+            type="radio"
+            name="rating-2"
+            className="mask mask-star-2 bg-orange-400"
+          />
+          <span className="ml-1 font-semibold">{Rating}</span>
+        </div>
+      </div>
     </div>
   );
+};
+
+ShowCard.propTypes = {
+  show: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    externals: PropTypes.shape({
+      imdb: PropTypes.string,
+    }),
+    type: PropTypes.string,
+    language: PropTypes.string,
+    genres: PropTypes.arrayOf(PropTypes.string),
+    runtime: PropTypes.number,
+    premiered: PropTypes.string,
+    ended: PropTypes.string,
+    image: PropTypes.shape({
+      original: PropTypes.string,
+      medium: PropTypes.string,
+    }),
+    status: PropTypes.string,
+    rating: PropTypes.shape({
+      average: PropTypes.number,
+    }),
+    url: PropTypes.string,
+  }).isRequired,
 };
 
 export default ShowCard;

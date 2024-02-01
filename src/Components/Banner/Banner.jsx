@@ -1,7 +1,6 @@
 import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
+import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-// ..
 
 const Banner = () => {
   return (

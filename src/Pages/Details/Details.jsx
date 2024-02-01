@@ -183,7 +183,9 @@ const Details = () => {
           <p>
             Air Time: {showTime} & {showDay}{" "}
           </p>
-          <p>Runtime: {runtime} Minute</p>
+          <p>
+            Runtime: {runtime || "Not Available"} {runtime && "Minute"}
+          </p>
           <div className="">
             <button
               className="btn text-white border-none bg-red-500 hover:text-black hover:bg-gray-300"
